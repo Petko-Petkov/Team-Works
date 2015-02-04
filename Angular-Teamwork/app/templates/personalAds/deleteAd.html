@@ -1,0 +1,48 @@
+<div class="bs-component">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Confirm deleting ad?</h3>
+        </div>
+        <div class="panel-body">
+
+                <h2 class="text-center">{{data.title}}<span class="small pull-right">{{data.date | date:'d-MMM-yyyy'}}</span></h2>
+
+            <div class="row">
+                <div class="col-md-3 image-box">
+                    <img ng-src="data.imageDataUrl" id="imagePreview" alt="adImage"/>
+                </div>
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <textarea class="form-control" name="text" id="content" cols="100" rows="5"
+                                  ng-model="data.text"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label class="col-md-2" for="categoriesOptions">Categories</label>
+
+                            <div class="col-md-9">
+                                <select class="form-control" name="categoriesOptions" id="categoriesOptions" ng-model="data.categoryId"
+                                        ng-options="category.id as category.name for category in categories" ng-value="data.categoryId">
+                                    <option value="">--Select category--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2" for="townsOptions">Town</label>
+
+                            <div class="col-md-9">
+                                <select class="form-control" name="townsOptions" id="townsOptions" ng-model="data.townId" ng-options="town.id as town.name for town in towns" ng-value="data.townId">
+                                    <option value="">--Select town--</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="deleteAd(param)">Delete</button>
+                <a href="#/user/ads" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-9">
+        <ul>
+            <img src="img/loading.gif" alt="loading..." ng-hide="ready"/>
+            <li ng-repeat="ad in data.ads">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ad.title}}
+                                <small class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</small>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-4 image-container">
+                                <img ng-src="{{ad.imageDataUrl}}" src="img/No-Image-Available.png" alt="image"
+                                     class="img-responsive"/>
+                            </div>
+                            <div class="col-md-8 add-container">
+                                <div>
+                                <span>{{ad.text}}</span>
+                                </div>
+                                <br/><br/>
+
+                                <div class="add-info-container">
+                                    <div>
+                                        <span>
+                                            <strong class="col-md-3">Name: </strong> <span class="col-md-9">{{ad.ownerName}}</span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            <strong class="col-md-3">Email: </strong><span class="col-md-9">{{ad.ownerEmail}}</span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <span>
+                                            <strong class="col-md-3">Tel: </strong><span class="col-md-9">{{ad.ownerPhone}}</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <div class="col-lg-10">
+            <select class="form-control" id="categories" ng-model="category.id" ng-options="category.id as category.name for category in categories" ng-change="reloadAdds(true)">
+                <option value="">-- choose category --</option>
+            </select>
+        </div>
+        <div class="col-lg-10">
+            <select class="form-control" id="towns" ng-model="town.id" ng-options="town.id as town.name for town in towns" ng-change="reloadAdds(true)">
+                <option value="">-- choose town --</option>
+            </select>
+        </div>
+    </div>
+
+    <ul class="pagination">
+        <li><a href="" ng-click="borderPages(1)">|<<</a></li>
+        <li><a href="" ng-click="goToPage(-1)"><<</a></li>
+        <li><a href="" ng-click="goToPage(-2)">{{currentPage - 2 < 1 ? '':currentPage - 2 }}</a></li>
+        <li><a href="" ng-click="goToPage(-1)">{{currentPage - 1 < 1 ? '':currentPage - 1 }}</a></li>
+        <li class="active"><a href="#">{{currentPage}}</a></li>
+        <li><a href="" ng-click="goToPage(1)">{{currentPage + 1 > numPages ? '':currentPage + 1 }}</a></li>
+        <li><a href="" ng-click="goToPage(2)">{{currentPage + 2 > numPages ? '':currentPage + 2 }}</a></li>
+        <li><a href="" ng-click="goToPage(1)">>></a></li>
+        <li><a href="" ng-click="borderPages(numPages)">>>|</a></li>
+    </ul>
+</div>

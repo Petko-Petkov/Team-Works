@@ -1,0 +1,102 @@
+<div class="col-lg-12">
+    <div class="well bs-component">
+        <form class="form-horizontal" name="editAdForm">
+            <fieldset>
+                <legend class="text-center">Edit advertisement</legend>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label for="inputTitle" class="col-lg-3 control-label">Title</label>
+
+                            <div class="col-lg-9">
+                                <input type="text" ng-model="data.title" class="form-control" id="inputTitle"
+                                       placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="content" class="col-lg-3 control-label">Content</label>
+
+                            <div class="col-lg-9">
+                                <textarea class="form-control" rows="6" id="content" ng-model="data.text"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-md-3"></div>
+                                <span class="btn btn-primary btn-file col-md-2" id="inputImage">
+                                    Browse&hellip;
+                                    <input id="adImage" type="file" ng-file-select="" name="file" accept="image/*"
+                                           ng-model="data.imageDataURL"
+                                           onchange="angular.element(this).scope().changePic(this.files)">
+                                </span>
+                            <div class="col-md-2">
+                                <a id="change-image" class="btn btn-default " href='' ng-model="data.changeImage" ng-click="setChangePic()">Change image</a>
+                            </div>
+                            <div class="col-md-2">
+                                <a id="delete-image" class="btn btn-danger  " href='' ng-click="deletePic()">Delete
+                                    image</a></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputCategory" class="col-lg-3 control-label">Category</label>
+
+                            <div class="col-lg-9">
+                                <select class="form-control" id="inputCategory" ng-model="data.categoryId"
+                                        ng-options="category.id as category.name for category in categories"
+                                        ng-value="data.categoryId">
+                                    <option value="">--Category name--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputTown" class="col-lg-3 control-label">Town</label>
+
+                            <div class="col-lg-9">
+                                <select class="form-control" id="inputTown" ng-model="data.townId"
+                                        ng-options="town.id as town.name for town in towns" ng-value="data.townId">
+                                    <option value="">--Choose town--</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button class="btn btn-default">Cancel</button>
+                                <button type="button" class="btn btn-primary" ng-click="edit(param, data)">
+                                    Publish
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 image-box">
+                        <img id="imagePreview" class="ad-img" alt="Image preview"/>
+                    </div>
+
+                </div>
+            </fieldset>
+        </form>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+
+    </div>
+    <!--
+        <script>
+            $(document).on('change', '.btn-file :file', function () {
+                var input = $(this),
+                        numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+                input.trigger('fileselect', [numFiles, label]);
+            });
+
+            $(document).ready(function () {
+                $('.btn-file :file').on('fileselect', function (event, numFiles, label) {
+
+                    var input = $(this).parents('.input-group').find(':text'),
+                            log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+                    if (input.length) {
+                        input.val(log);
+                    } else {
+                        if (log) alert(log);
+                    }
+
+                });
+            });
+        </script>
+    </div>-->

@@ -1,0 +1,88 @@
+<div class="col-lg-6">
+    <div class="well bs-component">
+        <form class="form-horizontal" name="editProfileForm">
+            <fieldset>
+                <legend class="text-center">Update Profile</legend>
+                <div class="form-group">
+                    <label for="inputName" class="col-lg-2 control-label">Name:</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" ng-required="true" class="form-control form-validation" id="inputName" placeholder="Your name"
+                               ng-model="user.name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-lg-2 control-label">Email:</label>
+
+                    <div class="col-lg-10">
+                        <input type="text" ng-required="true" class="form-control form-validation" id="inputEmail" placeholder="Email"
+                               ng-model="user.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone" class="col-lg-2 control-label">Phone: </label>
+
+                    <div class="col-lg-10">
+                        <input type="tel" class="form-control" id="inputPhone" placeholder="Phone"
+                               ng-model="user.phoneNumber">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="selectTown" class="col-lg-2 control-label">Town:</label>
+                    <div class="col-lg-10">
+                        <select name="town" id="selectTown" ng-model="user.townId" ng-options="town.id as town.name for town in towns" ng-value="user.townId">
+                            <option value="">--Select town--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-5 pull-right">
+                        <a href="#/home" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary" ng-click="editProfile(user, editProfileForm)">Update</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+        <div id="source-button" class="btn btn-primary btn-xs" style="display: none;">&lt; &gt;</div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="well bs-component">
+        <form class="form-horizontal" name="editPasswordForm">
+            <fieldset>
+                <legend class="text-center">Change account password</legend>
+
+                <div class="form-group">
+                    <label for="oldPassword" class="col-lg-2 control-label">Password:</label>
+
+                    <div class="col-lg-10">
+                        <input type="password" ng-required="true" class="form-control form-validation" id="oldPassword" placeholder="Password"
+                               ng-model="pass.oldPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword" class="col-lg-2 control-label">Confirm password:</label>
+
+                    <div class="col-lg-10">
+                        <input type="password" ng-required="true" ng-minlength="2" ng-maxlength="100" class="form-control form-validation" id="newPassword"
+                               placeholder="Confirm password" ng-model="pass.newPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword" class="col-lg-2 control-label">Confirm password:</label>
+
+                    <div class="col-lg-10">
+                        <input type="password" ng-required="true" ng-minlength="2" ng-maxlength="100" class="form-control form-validation" id="confirmNewPassword"
+                               placeholder="Confirm password" ng-model="pass.confirmPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-5 pull-right">
+                        <a href="#/home" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary" ng-click="changePassword(pass, editPasswordForm)">Change</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

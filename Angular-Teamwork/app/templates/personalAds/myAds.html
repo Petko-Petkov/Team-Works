@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-9">
+        <ul>
+            <li ng-repeat="ad in personalAdsData.ads">
+                <div class="row">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">{{ad.title}}
+                                <small class="pull-right">{{ad.date | date:'d-MMM-yyyy'}}</small>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="col-md-3 image-container">
+                                <img ng-src="{{ad.imageDataUrl}}" src="img/No-Image-Available.png" alt="image"
+                                     class="img-responsive"/>
+                            </div>
+                            <div class="col-md-7 add-container">
+                                <div>
+                                    <span>{{ad.text}}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div>
+                                    <span>Status: {{ad.status}}</span>
+                                </div>
+                                <div>
+                                    <button ng-show="checkAdId(ad.status)" class="btn btn-danger" ng-click="deactivateAd(ad.id)">Deactivate</button>
+                                </div>
+                                <div ng-show="checkIfAdInactive(ad.status)">
+                                    <button class="btn btn-success col-sm-12" ng-click="getSingleAd(ad.id)">Edit</button>
+                                    <button class="btn btn-success col-sm-12" ng-click="publishAgain(ad.id)">Publish again</button>
+                                    <button class="btn btn-success col-sm-12" ng-click="deleteAd(ad.id)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="pagination">
+            <li><a href="" ng-click="borderPages(1)">|<<</a></li>
+            <li><a href="" ng-click="goToPage(-1)"><<</a></li>
+            <li><a href="" ng-click="goToPage(-2)">{{currentPage - 2 < 1 ? '':currentPage - 2 }}</a></li>
+            <li><a href="" ng-click="goToPage(-1)">{{currentPage - 1 < 1 ? '':currentPage - 1 }}</a></li>
+            <li class="active"><a href="#">{{currentPage}}</a></li>
+            <li><a href="" ng-click="goToPage(1)">{{currentPage + 1 > numPages ? '':currentPage + 1 }}</a></li>
+            <li><a href="" ng-click="goToPage(2)">{{currentPage + 2 > numPages ? '':currentPage + 2 }}</a></li>
+            <li><a href="" ng-click="goToPage(1)">>></a></li>
+            <li><a href="" ng-click="borderPages(numPages)">>>|</a></li>
+        </ul>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">My ads</h3>
+            </div>
+            <div class="panel-body">
+                <div><a ng-href="#/user/ads" ng-click="reloadAds(true)">All</a></div>
+                <div><a ng-href="#/user/ads" ng-click="reloadAds(true, '2')">Published</a></div>
+                <div><a ng-href="#/user/ads" ng-click="reloadAds(true, '1')">Waiting approval</a></div>
+                <div><a ng-href="#/user/ads" ng-click="reloadAds(true, '0')">Inactive</a></div>
+                <div><a ng-href="#/user/ads" ng-click="reloadAds(true, '3')">Rejected</a></div>
+            </div>
+        </div>
+    </div>
+</div>
